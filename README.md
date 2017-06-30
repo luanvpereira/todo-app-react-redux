@@ -1,4 +1,12 @@
-# todo-app-react-redux
-Primeiro app do curso usando: React + Redux: Fundamentos e Duas Apps do ABSOLUTO ZERO
+# todo-app-react
+Primeiro app do curso: React + Redux: Fundamentos e Duas Apps do ABSOLUTO ZERO
 
-Instalar mongodb e rodar sudo mongod
+
+Entrar nas pastas:
+
+**frontend**: 
+- Rodar **npm i && npm start**
+
+**backend**:
+- Instalar **mongodb** e rodar **sudo mongod**
+- Rodar **npm i && npm run production**
