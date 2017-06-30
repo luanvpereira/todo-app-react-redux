@@ -8,6 +8,7 @@ Entrar nas pastas:
 - Rodar **npm i && npm start**
 
 **backend**:
-- Criar diretório: **/data/db**
-- Instalar **mongodb** e rodar **sudo mongod**
+- Instalar **mongodb** (via `brew install mongodb`)
+- Criar diretório **/data/db** (via `sudo mkdir -p /data/db`)
+- Rodar **sudo mongod**
 - Rodar **npm i && npm run production**
