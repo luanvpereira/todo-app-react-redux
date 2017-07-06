@@ -57,7 +57,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => (
 	bindActionCreators({
-		changeDescription
+		changeDescription,
+		search
 	}, dispatch)
 );
 
