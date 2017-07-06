@@ -11,7 +11,7 @@ export const search = () => {
 	const refreshURL = `${URL}?sort=-createdAt`;
 
 	return (dispatch, state) => {
-		const searchURL =`${refreshURL}&description__regex=${state().todo.description}`;
+		const searchURL =`${refreshURL}&description__regex=/${state().todo.description}/i`;
 		axios
 			.get(searchURL)
 			.then(resp => dispatch({type: 'TODO_SEARCHED', payload: resp.data}))
