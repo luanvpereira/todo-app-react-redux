@@ -23,6 +23,10 @@ class TodoForm extends Component {
 				e.shiftKey ? this.props.search() : this.props.add(this.props.description);
 			} else if(e.key == 'Escape') {
 				this.props.clear();
+			} else {
+				if(e.target.value == '') {
+					this.props.search();
+				}
 			}
 		}
 	};
