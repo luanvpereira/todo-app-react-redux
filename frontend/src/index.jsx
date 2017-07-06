@@ -3,7 +3,10 @@ import	ReactDOM	from	'react-dom';
 
 import { createStore, applyMiddleware } 	from 'redux';
 import { Provider } 		from 'react-redux';
-import Promise from 'redux-promise';
+
+import promise from 'redux-promise';
+import multi from 'redux-multi';
+import thunk from 'redux-thunk';
 
 import	App				from	'./main/app';
 import	Reducers	from	'./main/reducers';
@@ -11,7 +14,7 @@ import	Reducers	from	'./main/reducers';
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ 
 			&& window.__REDUX_DEVTOOLS_EXTENSION__();
 
-const store = applyMiddleware(Promise)(createStore)(Reducers, devTools);
+const store = applyMiddleware(thunk, multi, promise)(createStore)(Reducers, devTools);
 
 ReactDOM.render(
 	<Provider store={store}>

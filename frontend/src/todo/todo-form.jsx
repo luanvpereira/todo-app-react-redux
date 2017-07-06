@@ -5,12 +5,11 @@ import { bindActionCreators } from 'redux';
 import	Grid				from	'../templates/grid';
 import	IconButton	from	'../templates/icon-button';
 
-import	{ changeDescription, search } from 	'./todo-actions';
+import	{ changeDescription, search, add } from 	'./todo-actions';
 
 class TodoForm extends Component {
 	constructor(props) {
 		super(props);
-
 		this.keyHandler = this.keyHandler.bind(this);
 	}
 
@@ -18,11 +17,13 @@ class TodoForm extends Component {
 		this.props.search();
 	}
 
-	keyHandler(e) {
-		if(e.key == 'Enter') {
-			e.shiftKey ? this.props.handleSearch() : this.props.handleAdd();
-		} else if(e.key == 'Escape') {
-			this.props.handleClear();
+	keyHandler() {
+		return (e) => {
+			if(e.key == 'Enter') {
+				e.shiftKey ? this.props.search() : this.props.add(this.props.description);
+			} else if(e.key == 'Escape') {
+				this.props.handleClear();
+			}
 		}
 	};
 
@@ -35,15 +36,15 @@ class TodoForm extends Component {
 						className="form-control"
 						placeholder="Add a task"
 						type="text"
-						onKeyUp={this.keyHandler}
+						onKeyUp={this.keyHandler()}
 						onChange={this.props.changeDescription}
 						value={this.props.description}
 					/>
 				</Grid>
 
 				<Grid cols="12 3 2">
-					<IconButton style="primary"	icon="plus"		onClick={this.props.handleAdd}/>
-					<IconButton style="info"		icon="search"	onClick={this.props.handleSearch}/>
+					<IconButton style="primary"	icon="plus"		onClick={() => this.props.add(this.props.description)}/>
+					<IconButton style="info"		icon="search"	onClick={() => this.props.search() }/>
 					<IconButton style="default"	icon="close"	onClick={this.props.handleClear}/>
 				</Grid>
 			</div>
@@ -58,7 +59,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => (
 	bindActionCreators({
 		changeDescription,
-		search
+		search,
+		add
 	}, dispatch)
 );
 
